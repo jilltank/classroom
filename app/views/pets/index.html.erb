@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Hogwarts Pets</h1>
+
+<%= link_to 'New Pet', new_pet_path, class: "btn btn-info" %>
+
+  <ul class="nav nav-pills" role="tablist">
+    <li>
+      <%= link_to "All Pets", pets_path %>
+    </li>
+    <% @my_pets.each do |n| %>
+      <li>
+        <%= link_to n.name, pets_path(name: n.name) %>
+      </li>
+    <% end %>
+  </ul>
+
+
+  <div class="row">
+    <% @pets.each do |n| %>
+      <div class="col-md-4">
+        <div class="well">
+          <p><%= "#{n.name}" %></p>
+          <p><%= "breed: #{n.breed}" %></p>
+          <p><%= "food: #{n.food}" %></p>
+          <p>            
+            <%= link_to 'Show', n, class: "btn btn-primary" %>
+            <%= link_to 'Edit', edit_pet_path(n), class: "btn btn-warning" %>
+            <%= link_to 'Destroy', n, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          </p>
+        </div>
+    </div>
+  <% end %>
+</div>
